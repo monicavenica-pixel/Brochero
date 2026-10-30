@@ -1,54 +1,42 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Santo Cura Brochero en 3D</title>
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; min-height: 100vh; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; padding: 20px;
-      background: #f4f0e7; color: #29251f;
-      font-family: Arial, sans-serif; text-align: center;
-    }
-    main { width: min(100%, 760px); }
-    h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); margin: 0 0 8px; }
-    p { line-height: 1.5; margin: 0 auto 16px; }
-    model-viewer {
-      width: 100%; height: min(65vh, 560px); min-height: 340px;
-      background: #fff; border-radius: 18px;
-      --poster-color: #fff;
-    }
-    .hint { font-size: .95rem; margin-top: 14px; }
-    .ar-button {
-      border: 0; border-radius: 999px; padding: 13px 22px;
-      background: #654b32; color: white; font-size: 1rem;
-      margin-top: 12px; cursor: pointer;
-    }
-    .note { font-size: .82rem; color: #625b52; margin-top: 14px; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Santo Cura Brochero – Experiencia interactiva</title>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;padding:20px;background:#f4f0e7;color:#29251f;font-family:Arial,sans-serif;text-align:center}
+main{width:min(100%,760px);margin:auto}h1{font-size:clamp(1.7rem,5vw,2.4rem);margin:8px 0}h2{font-size:1.45rem;margin:0 0 12px}p{line-height:1.5}
+section{background:#fff;border-radius:18px;padding:20px;margin:18px 0;box-shadow:0 2px 10px #00000010}
+model-viewer{width:100%;height:min(65vh,560px);min-height:340px;background:#f8f8f8;border-radius:14px;--poster-color:#f8f8f8}
+button{border:0;border-radius:999px;padding:13px 20px;background:#654b32;color:white;font-size:1rem;margin:8px 4px;cursor:pointer}
+.hint,.note{font-size:.9rem;color:#625b52}.video{position:relative;width:100%;aspect-ratio:16/9}.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px}
+.question{text-align:left;margin:18px 0}.question label{display:block;padding:7px 4px}#result{font-weight:bold;margin-top:12px}
+</style>
 </head>
-<body>
-  <main>
-    <h1>Santo Cura Brochero</h1>
-    <p>Explorá su figura en tres dimensiones. Podés girarla y acercarla con los dedos.</p>
-    <model-viewer
-      src="./brochero2.glb"
-      alt="Modelo tridimensional del Santo Cura Brochero"
-      camera-controls
-      auto-rotate
-      rotation-per-second="18deg"
-      shadow-intensity="1"
-      exposure="1"
-      ar
-      ar-modes="webxr scene-viewer quick-look"
-      ar-placement="floor">
-      <button slot="ar-button" class="ar-button">Ver a Brochero en mi espacio</button>
-    </model-viewer>
-    <p class="hint">En celulares compatibles, tocá «Ver a Brochero en mi espacio» para probar la realidad aumentada.</p>
-    <p class="note">La experiencia necesita conexión a Internet. La disponibilidad de realidad aumentada depende del celular y del navegador.</p>
-  </main>
-</body>
-</html>
+<body><main>
+<h1>Santo Cura Brochero</h1>
+<p>Conocé al Cura Gaucho: explorá su figura, mirá su historia y poné a prueba lo que aprendiste.</p>
+<section>
+<h2>1. Conocé a Brochero en 3D</h2><p>Podés girar la figura y acercarla con los dedos.</p>
+<model-viewer src="./brochero2.glb" alt="Modelo tridimensional del Santo Cura Brochero" camera-controls auto-rotate rotation-per-second="18deg" shadow-intensity="1" exposure="1" ar ar-modes="webxr scene-viewer quick-look" ar-placement="floor">
+<button slot="ar-button">Ver a Brochero en mi espacio</button>
+</model-viewer>
+<p class="hint">En celulares compatibles, tocá el botón para probar la realidad aumentada. Si no funciona, podés seguir viendo el modelo en 3D.</p>
+</section>
+<section><h2>2. Mirá su historia</h2><p>Un vídeo para conocer la vida y la misión del Cura Gaucho.</p>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/vDrXld7aeGY" title="Vídeo sobre el Santo Cura Brochero" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+<p class="note">El vídeo necesita conexión a Internet.</p></section>
+<section><h2>3. ¿Cuánto aprendiste?</h2><p>Respondé estas preguntas y comprobá tus conocimientos.</p>
+<form id="quiz">
+<div class="question"><strong>1. ¿Cómo se conoce popularmente al Cura Brochero?</strong><label><input type="radio" name="q1" value="a"> El Cura Gaucho</label><label><input type="radio" name="q1" value="b"> El Cura Marino</label></div>
+<div class="question"><strong>2. ¿En qué provincia argentina desarrolló gran parte de su misión?</strong><label><input type="radio" name="q2" value="a"> Córdoba</label><label><input type="radio" name="q2" value="b"> Misiones</label></div>
+<div class="question"><strong>3. ¿Cómo recorría caminos para visitar a muchas personas?</strong><label><input type="radio" name="q3" value="a"> En barco</label><label><input type="radio" name="q3" value="b"> En mula</label></div>
+<div class="question"><strong>4. ¿Qué lo impulsaba a acercarse a la gente?</strong><label><input type="radio" name="q4" value="a"> El deseo de servir y anunciar a Jesús</label><label><input type="radio" name="q4" value="b"> La búsqueda de fama y riqueza</label></div>
+<button type="button" onclick="checkAnswers()">Corregir respuestas</button><button type="reset" onclick="document.getElementById('result').textContent=''">Volver a intentar</button><p id="result" aria-live="polite"></p>
+</form></section><p class="note">Experiencia preparada para Catequesis Renacer.</p>
+</main>
+<script>
+function checkAnswers(){const a={q1:"a",q2:"a",q3:"b",q4:"a"};let s=0;for(const [q,v] of Object.entries(a)){const x=document.querySelector('input[name="'+q+'"]:checked');if(x&&x.value===v)s++;}document.getElementById("result").textContent=s===4?"¡Excelente! ¡Conocés muy bien al Cura Brochero!":"Acertaste "+s+" de 4. ¡Volvé a mirar y probá otra vez!";}
+</script></body></html>
